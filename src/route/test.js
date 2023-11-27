@@ -3,8 +3,6 @@ const express = require('express')
 // Cтворюємо роутер - місце, куди ми підключаємо ендпоїнти
 const router = express.Router()
 
-const Test = require('../class/test')
-
 // ================================================================
 
 // router.get Створює нам один ентпоїнт
@@ -18,19 +16,28 @@ router.get('/', function (req, res) {
     // вказуємо назву контейнера
     name: 'index',
     // вказуємо назву компонентів
-    component: ['heading'],
+    component: [],
 
     // вказуємо назву сторінки
-    title: 'Назва сторінки',
+    title: 'Title',
     // ... сюди можна далі продовжувати додавати потрібні технічні дані, які будуть використовуватися в layout
 
     // вказуємо дані,
-    data: {
-      test: new Test().test,
-    },
+    data: {},
   })
   // ↑↑ сюди вводимо JSON дані
 })
+//================================================
+router.get('/layout', function (req, res) {
+  res.render('layout', {
+    name: 'layout',
+    component: [],
 
+    title: 'layout',
+
+    data: {},
+  })
+})
+//================================================
 // Підключаємо роутер до бек-енду
 module.exports = router
